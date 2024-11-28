@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiRequest = axios.create({
-  baseURL: "https://supreme-space-spoon-5j6pjgjjjvx2v67p-8800.app.github.dev/api",
+  baseURL: "https://easyrent-api.onrender.com/api",
   withCredentials: true,
 });
 
