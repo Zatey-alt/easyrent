@@ -2,7 +2,7 @@ import { Server } from "socket.io";
 
 const io = new Server({
   cors: {
-    origin: "https://supreme-space-spoon-5j6pjgjjjvx2v67p-5173.app.github.dev/",
+    origin: "https://easyrent-three.vercel.app/",
   },
 });
 
