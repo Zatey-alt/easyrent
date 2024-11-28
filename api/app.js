@@ -10,7 +10,7 @@ import messageRoute from "./routes/message.route.js";
 
 const app = express();
 
-app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
+app.use(cors({ origin: "https://supreme-space-spoon-5j6pjgjjjvx2v67p-5173.app.github.dev", credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 
