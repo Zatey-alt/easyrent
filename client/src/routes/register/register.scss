@@ -14,20 +14,54 @@
       flex-direction: column;
       gap: 20px;
 
+      h1 {
+        font-size: 24px;
+        color: #333;
+      }
+
       input {
-        padding: 20px;
+        width: 100%;
+        padding: 15px;
         border: 1px solid gray;
         border-radius: 5px;
+        font-size: 16px;
+      }
+
+      .passwordContainer {
+        position: relative;
+
+        input {
+          width: 100%;
+          padding-right: 40px; 
+        }
+
+        .togglePassword {
+          position: absolute;
+          top: 50%;
+          right: 10px;
+          transform: translateY(-50%);
+          cursor: pointer;
+          color: gray;
+
+          &:hover {
+            color: rgb(59, 59, 240);
+          }
+        }
       }
 
       button {
-        padding: 20px;
+        padding: 15px;
         border-radius: 5px;
         border: none;
-        background-color: teal;
+        background-color: blue;
         color: white;
         font-weight: bold;
         cursor: pointer;
+        font-size: 16px;
+
+        &:hover {
+          background-color: rgb(59, 59, 240);
+        }
 
         &:disabled {
           background-color: #bed9d8;
@@ -37,13 +71,20 @@
 
       span {
         color: rgba(255, 0, 0, 0.591);
+        font-size: 14px;
       }
 
       a {
         font-size: 14px;
         color: gray;
         border-bottom: 1px solid gray;
+        text-decoration: none;
         width: max-content;
+
+        &:hover {
+          color: blue;
+          border-bottom-color: rgb(59, 59, 240);
+        }
       }
     }
   }
@@ -54,8 +95,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
     img {
       width: 100%;
+      max-width: 500px;
+      object-fit: contain;
     }
   }
 }

@@ -3,13 +3,14 @@ import "./login.scss";
 import { Link, useNavigate } from "react-router-dom";
 import apiRequest from "../../lib/apiRequest";
 import { AuthContext } from "../../context/AuthContext";
+import { Eye, EyeOff } from "lucide-react"; 
 
 function Login() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
-  const {updateUser} = useContext(AuthContext)
-
+  const { updateUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -27,42 +28,55 @@ function Login() {
         password,
       });
 
-      updateUser(res.data)
+      updateUser(res.data);
 
       navigate("/");
     } catch (err) {
-      setError(err.response.data.message);
+      setError(err.response?.data?.message || "An error occurred.");
     } finally {
       setIsLoading(false);
     }
   };
+
   return (
     <div className="login">
       <div className="formContainer">
         <form onSubmit={handleSubmit}>
-          <h1>Welcome back</h1>
+          <h1>Welcome Back</h1>
           <input
             name="username"
+            type="text"
+            placeholder="Username"
             required
             minLength={3}
             maxLength={20}
-            type="text"
-            placeholder="Username"
           />
-          <input
-            name="password"
-            type="password"
-            required
-            placeholder="Password"
-          />
-          <button disabled={isLoading}>Login</button>
+          <div className="passwordContainer">
+            <input
+              name="password"
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              required
+            />
+            <span
+              className="togglePassword"
+              onClick={() => setShowPassword(!showPassword)}
+              aria-label="Toggle password visibility"
+            >
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            </span>
+          </div>
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? "Loading..." : "Login"}
+          </button>
           {error && <span>{error}</span>}
-          <Link to="/register">{"Don't"} you have an account?</Link>
+          <div className="extraLinks">
+            <Link to="/forgot-account">Forgot account?</Link>
+            <Link to="/register">Don’t have an account?</Link>
+          </div>
         </form>
       </div>
-      <div className="imgContainer">
-        <img src="/bg.png" alt="" />
-      </div>
+     
     </div>
   );
 }
